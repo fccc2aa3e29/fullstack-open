@@ -1,5 +1,19 @@
 import {useState} from 'react'
 
+const Button = (props) => {
+  return (
+    <button onClick={props.handleClick}>
+      {props.text}
+    </button>
+  )
+}
+
+const Display = (props) => {
+  return (
+    <p>{props.text} {props.count}</p>
+  )
+}
+
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -8,7 +22,15 @@ const App = () => {
 
   return (
     <div>
-      code here
+      <h1>Give Feedback</h1>
+      <Button handleClick={() => setGood(good + 1)} text='Good' />
+      <Button handleClick={() => setNeutral(neutral + 1)} text='Neutral' />
+      <Button handleClick={() => setBad(bad + 1)} text='Bad' />
+
+      <h1>Statistics</h1>
+      <Display text='Good:' count={good} />
+      <Display text='Neutral:' count={neutral} />
+      <Display text='Bad:' count={bad} />
     </div>
   )
 }
