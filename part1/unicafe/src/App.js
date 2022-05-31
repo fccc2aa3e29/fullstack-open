@@ -17,16 +17,24 @@ const Display = (props) => {
 const Statistics = (props) => {
   const all = props.good + props.bad + props.neutral
 
+  if (all === 0) {
+    return(
+      <div>
+        <h1>Statistics</h1>
+        <p>No feedback given.</p>
+      </div>
+    )
+  }
   return (
     <div>
-       <h1>Statistics</h1>
+      <h1>Statistics</h1>
       <Display text='Good:' stat={props.good} />
       <Display text='Neutral:' stat={props.neutral} />
       <Display text='Bad:' stat={props.bad} />
       <Display text='All:' stat={all} />
       <Display text='Average:' stat={(props.good - props.bad) / all} />
       <Display text='Positive' stat={props.good / all * 100} />
-   </div>
+    </div>
   )
 }
 
