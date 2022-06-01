@@ -12,10 +12,13 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
+  const getRand = () => setSelected(Math.floor(Math.random() * 7))
 
   return (
     <div>
       {anecdotes[selected]}
+      <br />
+      <button onClick={getRand}>Next anecdote</button>
     </div>
   )
 }
